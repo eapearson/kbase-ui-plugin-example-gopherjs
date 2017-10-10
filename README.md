@@ -1,0 +1,1 @@
+# A GopherJS Plugin

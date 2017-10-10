@@ -1,0 +1,14 @@
+{
+    "name": "kbase-ui-plugin-example-gopherjs",
+    "version": "0.1.0",
+    "description": "Example Plugin using Gopher JS",
+    "main": "index.js",
+    "repository": "https://github.com/eapearson/kbase-ui-plugin-example-gopherjs",
+    "author": "Erik Pearson",
+    "license": "SEE LICENSE IN LICENSE",
+    "dependencies": {
+        "bluebird": "^3.5.0",
+        "requirejs": "^2.3.5",
+        "knockout": "^3.4.2"
+    }
+}

@@ -1,0 +1,26 @@
+# GopherJS Demo Plugin
+---
+package:
+  name: example-gopherjs
+  descrption: A GopherJS example app
+  auther: Erik Pearson
+source:
+  modules: []
+install:
+  widgets:
+    -
+      id: kb_exampleGopherJS_panel
+      module: panel
+      type: factory
+  routes:
+    -
+      path: [example, gopherjs]
+      widget: kb_exampleGopherJS_panel
+      authorization: true
+  menu:
+    -
+      name: example-gopherjs
+      definition:
+        path: example/gopherjs
+        label: Example - GopherJS
+        icon: flask
