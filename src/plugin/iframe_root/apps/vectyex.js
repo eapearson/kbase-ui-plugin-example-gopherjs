@@ -8014,7 +8014,7 @@ $packages["reflect"] = (function() {
 	return $pkg;
 })();
 $packages["github.com/gopherjs/vecty"] = (function() {
-	var $pkg = {}, $init, js, reflect, Core, Component, Copier, Mounter, Unmounter, Keyer, ComponentOrHTML, RenderSkipper, HTML, List, KeyedList, batchRenderer, jsObject, wrappedObject, EventListener, Event, MarkupOrChild, Applyer, markupFunc, MarkupList, sliceType, sliceType$1, ptrType, sliceType$2, ptrType$1, sliceType$3, sliceType$4, structType, ptrType$2, funcType, sliceType$5, funcType$1, funcType$2, sliceType$6, ptrType$3, mapType, mapType$1, mapType$2, mapType$3, ptrType$4, mapType$4, ptrType$5, funcType$3, batch, global, undefined$1, Tag, extractHTML, sameType, doCopy, copyProps, render, renderComponent, mountUnmount, mount, unmount, requestAnimationFrame, RenderBody, SetTitle, wrapObject, replaceNode, apply, Property, Markup;
+	var $pkg = {}, $init, js, reflect, Core, Component, Copier, Mounter, Unmounter, Keyer, ComponentOrHTML, RenderSkipper, HTML, List, KeyedList, batchRenderer, jsObject, wrappedObject, EventListener, Event, MarkupOrChild, Applyer, MarkupList, sliceType, sliceType$1, ptrType, sliceType$2, ptrType$1, sliceType$3, sliceType$4, structType, ptrType$2, funcType, sliceType$5, funcType$1, funcType$2, sliceType$6, ptrType$3, mapType, mapType$1, mapType$2, mapType$3, ptrType$4, mapType$4, ptrType$5, funcType$3, batch, global, undefined$1, Tag, Text, extractHTML, sameType, doCopy, copyProps, render, renderComponent, mountUnmount, mount, unmount, requestAnimationFrame, RenderBody, SetTitle, wrapObject, replaceNode, apply;
 	js = $packages["github.com/gopherjs/gopherjs/js"];
 	reflect = $packages["reflect"];
 	Core = $pkg.Core = $newType(0, $kindStruct, "vecty.Core", true, "github.com/gopherjs/vecty", true, function(prevRenderComponent_, prevRender_, unmounted_) {
@@ -8134,7 +8134,6 @@ $packages["github.com/gopherjs/vecty"] = (function() {
 	});
 	MarkupOrChild = $pkg.MarkupOrChild = $newType(8, $kindInterface, "vecty.MarkupOrChild", true, "github.com/gopherjs/vecty", true, null);
 	Applyer = $pkg.Applyer = $newType(8, $kindInterface, "vecty.Applyer", true, "github.com/gopherjs/vecty", true, null);
-	markupFunc = $pkg.markupFunc = $newType(4, $kindFunc, "vecty.markupFunc", true, "github.com/gopherjs/vecty", false, null);
 	MarkupList = $pkg.MarkupList = $newType(0, $kindStruct, "vecty.MarkupList", true, "github.com/gopherjs/vecty", true, function(list_) {
 		this.$val = this;
 		if (arguments.length === 0) {
@@ -9090,6 +9089,22 @@ $packages["github.com/gopherjs/vecty"] = (function() {
 		/* */ } return; } if ($f === undefined) { $f = { $blk: Tag }; } $f._i = _i; $f._ref = _ref; $f.h = h; $f.m = m; $f.m$1 = m$1; $f.tag = tag; $f.$s = $s; $f.$r = $r; return $f;
 	};
 	$pkg.Tag = Tag;
+	Text = function(text, m) {
+		var _i, _ref, h, m, m$1, text, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _i = $f._i; _ref = $f._ref; h = $f.h; m = $f.m; m$1 = $f.m$1; text = $f.text; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		h = new HTML.ptr($ifaceNil, "", "", text, "", false, false, false, false, false, sliceType$3.nil, sliceType$4.nil, $ifaceNil, false, $ifaceNil, ptrType.nil);
+		_ref = m;
+		_i = 0;
+		/* while (true) { */ case 1:
+			/* if (!(_i < _ref.$length)) { break; } */ if(!(_i < _ref.$length)) { $s = 2; continue; }
+			m$1 = ((_i < 0 || _i >= _ref.$length) ? ($throwRuntimeError("index out of range"), undefined) : _ref.$array[_ref.$offset + _i]);
+			$r = apply(m$1, h); /* */ $s = 3; case 3: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+			_i++;
+		/* } */ $s = 1; continue; case 2:
+		$s = -1; return h;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: Text }; } $f._i = _i; $f._ref = _ref; $f.h = h; $f.m = m; $f.m$1 = m$1; $f.text = text; $f.$s = $s; $f.$r = $r; return $f;
+	};
+	$pkg.Text = Text;
 	batchRenderer.ptr.prototype.render = function(startTime) {
 		var _i, _i$1, _key, _r, _r$1, _r$2, _r$3, _r$4, _r$5, _r$6, _r$7, _ref, _ref$1, _tuple, avgRenderTime, b, budgetRemaining, c, c$1, elapsed, i, i$1, nextRender, pending, pendingMounts, prevRender, skip, startTime, $s, $r;
 		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _i = $f._i; _i$1 = $f._i$1; _key = $f._key; _r = $f._r; _r$1 = $f._r$1; _r$2 = $f._r$2; _r$3 = $f._r$3; _r$4 = $f._r$4; _r$5 = $f._r$5; _r$6 = $f._r$6; _r$7 = $f._r$7; _ref = $f._ref; _ref$1 = $f._ref$1; _tuple = $f._tuple; avgRenderTime = $f.avgRenderTime; b = $f.b; budgetRemaining = $f.budgetRemaining; c = $f.c; c$1 = $f.c$1; elapsed = $f.elapsed; i = $f.i; i$1 = $f.i$1; nextRender = $f.nextRender; pending = $f.pending; pendingMounts = $f.pendingMounts; prevRender = $f.prevRender; skip = $f.skip; startTime = $f.startTime; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
@@ -9723,29 +9738,6 @@ $packages["github.com/gopherjs/vecty"] = (function() {
 		$s = -1; return;
 		/* */ } return; } if ($f === undefined) { $f = { $blk: apply }; } $f._r = _r; $f._ref = _ref; $f.h = h; $f.m = m; $f.m$1 = m$1; $f.m$2 = m$2; $f.m$3 = m$3; $f.$s = $s; $f.$r = $r; return $f;
 	};
-	markupFunc.prototype.Apply = function(h) {
-		var h, m, $s, $r;
-		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; h = $f.h; m = $f.m; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
-		m = this.$val;
-		$r = m(h); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-		$s = -1; return;
-		/* */ } return; } if ($f === undefined) { $f = { $blk: markupFunc.prototype.Apply }; } $f.h = h; $f.m = m; $f.$s = $s; $f.$r = $r; return $f;
-	};
-	$ptrType(markupFunc).prototype.Apply = function(h) { return new markupFunc(this.$get()).Apply(h); };
-	Property = function(key, value) {
-		var key, value;
-		if (key === "style") {
-			$panic(new $String("vecty: Property called with key \"style\"; style package or Style should be used instead"));
-		}
-		return new markupFunc(((function(h) {
-			var _key, h;
-			if (h.properties === false) {
-				h.properties = {};
-			}
-			_key = key; (h.properties || $throwRuntimeError("assignment to entry in nil map"))[$String.keyFor(_key)] = { k: _key, v: value };
-		})));
-	};
-	$pkg.Property = Property;
 	MarkupList.ptr.prototype.Apply = function(h) {
 		var _i, _ref, a, h, m, $s, $r;
 		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _i = $f._i; _ref = $f._ref; a = $f.a; h = $f.h; m = $f.m; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
@@ -9768,11 +9760,6 @@ $packages["github.com/gopherjs/vecty"] = (function() {
 		/* */ } return; } if ($f === undefined) { $f = { $blk: MarkupList.ptr.prototype.Apply }; } $f._i = _i; $f._ref = _ref; $f.a = a; $f.h = h; $f.m = m; $f.$s = $s; $f.$r = $r; return $f;
 	};
 	MarkupList.prototype.Apply = function(h) { return this.$val.Apply(h); };
-	Markup = function(m) {
-		var m;
-		return new MarkupList.ptr(m);
-	};
-	$pkg.Markup = Markup;
 	ptrType$3.methods = [{prop: "Context", name: "Context", pkg: "", typ: $funcType([], [ptrType$3], false)}];
 	ptrType.methods = [{prop: "Node", name: "Node", pkg: "", typ: $funcType([], [ptrType$2], false)}, {prop: "Key", name: "Key", pkg: "", typ: $funcType([], [$emptyInterface], false)}, {prop: "createNode", name: "createNode", pkg: "github.com/gopherjs/vecty", typ: $funcType([], [], false)}, {prop: "reconcileText", name: "reconcileText", pkg: "github.com/gopherjs/vecty", typ: $funcType([ptrType], [], false)}, {prop: "reconcile", name: "reconcile", pkg: "github.com/gopherjs/vecty", typ: $funcType([ptrType], [sliceType$2], false)}, {prop: "reconcileProperties", name: "reconcileProperties", pkg: "github.com/gopherjs/vecty", typ: $funcType([ptrType], [], false)}, {prop: "removeProperties", name: "removeProperties", pkg: "github.com/gopherjs/vecty", typ: $funcType([ptrType], [], false)}, {prop: "reconcileChildren", name: "reconcileChildren", pkg: "github.com/gopherjs/vecty", typ: $funcType([ptrType], [sliceType$2], false)}, {prop: "removeChildren", name: "removeChildren", pkg: "github.com/gopherjs/vecty", typ: $funcType([sliceType$4], [], false)}, {prop: "firstChild", name: "firstChild", pkg: "github.com/gopherjs/vecty", typ: $funcType([], [jsObject], false)}, {prop: "nextSibling", name: "nextSibling", pkg: "github.com/gopherjs/vecty", typ: $funcType([], [jsObject], false)}, {prop: "removeChild", name: "removeChild", pkg: "github.com/gopherjs/vecty", typ: $funcType([ptrType], [], false)}, {prop: "appendChild", name: "appendChild", pkg: "github.com/gopherjs/vecty", typ: $funcType([ptrType], [], false)}, {prop: "insertBefore", name: "insertBefore", pkg: "github.com/gopherjs/vecty", typ: $funcType([jsObject, ptrType], [], false)}];
 	List.methods = [{prop: "WithKey", name: "WithKey", pkg: "", typ: $funcType([$emptyInterface], [KeyedList], false)}];
@@ -9780,7 +9767,6 @@ $packages["github.com/gopherjs/vecty"] = (function() {
 	ptrType$4.methods = [{prop: "add", name: "add", pkg: "github.com/gopherjs/vecty", typ: $funcType([Component], [], false)}, {prop: "render", name: "render", pkg: "github.com/gopherjs/vecty", typ: $funcType([$Float64], [], false)}];
 	wrappedObject.methods = [{prop: "Set", name: "Set", pkg: "", typ: $funcType([$String, $emptyInterface], [], false)}, {prop: "Get", name: "Get", pkg: "", typ: $funcType([$String], [jsObject], false)}, {prop: "Delete", name: "Delete", pkg: "", typ: $funcType([$String], [], false)}, {prop: "Call", name: "Call", pkg: "", typ: $funcType([$String, sliceType$1], [jsObject], true)}, {prop: "String", name: "String", pkg: "", typ: $funcType([], [$String], false)}, {prop: "Bool", name: "Bool", pkg: "", typ: $funcType([], [$Bool], false)}, {prop: "Int", name: "Int", pkg: "", typ: $funcType([], [$Int], false)}, {prop: "Float", name: "Float", pkg: "", typ: $funcType([], [$Float64], false)}];
 	ptrType$1.methods = [{prop: "PreventDefault", name: "PreventDefault", pkg: "", typ: $funcType([], [ptrType$1], false)}, {prop: "StopPropagation", name: "StopPropagation", pkg: "", typ: $funcType([], [ptrType$1], false)}, {prop: "Apply", name: "Apply", pkg: "", typ: $funcType([ptrType], [], false)}];
-	markupFunc.methods = [{prop: "Apply", name: "Apply", pkg: "", typ: $funcType([ptrType], [], false)}];
 	MarkupList.methods = [{prop: "Apply", name: "Apply", pkg: "", typ: $funcType([ptrType], [], false)}];
 	Core.init("github.com/gopherjs/vecty", [{prop: "prevRenderComponent", name: "prevRenderComponent", anonymous: false, exported: false, typ: Component, tag: ""}, {prop: "prevRender", name: "prevRender", anonymous: false, exported: false, typ: ptrType, tag: ""}, {prop: "unmounted", name: "unmounted", anonymous: false, exported: false, typ: $Bool, tag: ""}]);
 	Component.init([{prop: "Context", name: "Context", pkg: "", typ: $funcType([], [ptrType$3], false)}, {prop: "Render", name: "Render", pkg: "", typ: $funcType([], [ptrType], false)}]);
@@ -9800,7 +9786,6 @@ $packages["github.com/gopherjs/vecty"] = (function() {
 	Event.init("", [{prop: "Object", name: "Object", anonymous: true, exported: true, typ: ptrType$2, tag: ""}, {prop: "Target", name: "Target", anonymous: false, exported: true, typ: ptrType$2, tag: ""}]);
 	MarkupOrChild.init([]);
 	Applyer.init([{prop: "Apply", name: "Apply", pkg: "", typ: $funcType([ptrType], [], false)}]);
-	markupFunc.init([ptrType], [], false);
 	MarkupList.init("github.com/gopherjs/vecty", [{prop: "list", name: "list", anonymous: false, exported: false, typ: sliceType$6, tag: ""}]);
 	$init = function() {
 		$pkg.$init = function() {};
@@ -9816,7 +9801,7 @@ $packages["github.com/gopherjs/vecty"] = (function() {
 	return $pkg;
 })();
 $packages["github.com/gopherjs/vecty/elem"] = (function() {
-	var $pkg = {}, $init, vecty, Body, Div;
+	var $pkg = {}, $init, vecty, Body, Div, Heading1;
 	vecty = $packages["github.com/gopherjs/vecty"];
 	Body = function(markup) {
 		var _r, markup, $s, $r;
@@ -9834,6 +9819,14 @@ $packages["github.com/gopherjs/vecty/elem"] = (function() {
 		/* */ } return; } if ($f === undefined) { $f = { $blk: Div }; } $f._r = _r; $f.markup = markup; $f.$s = $s; $f.$r = $r; return $f;
 	};
 	$pkg.Div = Div;
+	Heading1 = function(markup) {
+		var _r, markup, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r = $f._r; markup = $f.markup; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		_r = vecty.Tag("h1", markup); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
+		$s = -1; return _r;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: Heading1 }; } $f._r = _r; $f.markup = markup; $f.$s = $s; $f.$r = $r; return $f;
+	};
+	$pkg.Heading1 = Heading1;
 	$init = function() {
 		$pkg.$init = function() {};
 		/* */ var $f, $c = false, $s = 0, $r; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
@@ -9844,13 +9837,8 @@ $packages["github.com/gopherjs/vecty/elem"] = (function() {
 	return $pkg;
 })();
 $packages["github.com/gopherjs/vecty/prop"] = (function() {
-	var $pkg = {}, $init, vecty, Value;
+	var $pkg = {}, $init, vecty;
 	vecty = $packages["github.com/gopherjs/vecty"];
-	Value = function(v) {
-		var v;
-		return vecty.Property("value", new $String(v));
-	};
-	$pkg.Value = Value;
 	$init = function() {
 		$pkg.$init = function() {};
 		/* */ var $f, $c = false, $s = 0, $r; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
@@ -9861,24 +9849,34 @@ $packages["github.com/gopherjs/vecty/prop"] = (function() {
 	return $pkg;
 })();
 $packages["github.com/eapearson/vectyex/components"] = (function() {
-	var $pkg = {}, $init, vecty, elem, prop, Hello, ptrType, sliceType, sliceType$1, ptrType$2;
+	var $pkg = {}, $init, vecty, elem, prop, Hello, Page, ptrType, sliceType, ptrType$2, ptrType$3;
 	vecty = $packages["github.com/gopherjs/vecty"];
 	elem = $packages["github.com/gopherjs/vecty/elem"];
 	prop = $packages["github.com/gopherjs/vecty/prop"];
 	Hello = $pkg.Hello = $newType(0, $kindStruct, "components.Hello", true, "github.com/eapearson/vectyex/components", true, function(Core_, Greeting_) {
 		this.$val = this;
 		if (arguments.length === 0) {
-			this.Core = new vecty.Core.ptr($ifaceNil, ptrType$2.nil, false);
+			this.Core = new vecty.Core.ptr($ifaceNil, ptrType$3.nil, false);
 			this.Greeting = "";
 			return;
 		}
 		this.Core = Core_;
 		this.Greeting = Greeting_;
 	});
+	Page = $pkg.Page = $newType(0, $kindStruct, "components.Page", true, "github.com/eapearson/vectyex/components", true, function(Core_, Title_) {
+		this.$val = this;
+		if (arguments.length === 0) {
+			this.Core = new vecty.Core.ptr($ifaceNil, ptrType$3.nil, false);
+			this.Title = "";
+			return;
+		}
+		this.Core = Core_;
+		this.Title = Title_;
+	});
 	ptrType = $ptrType(Hello);
-	sliceType = $sliceType(vecty.Applyer);
-	sliceType$1 = $sliceType(vecty.MarkupOrChild);
-	ptrType$2 = $ptrType(vecty.HTML);
+	sliceType = $sliceType(vecty.MarkupOrChild);
+	ptrType$2 = $ptrType(Page);
+	ptrType$3 = $ptrType(vecty.HTML);
 	Hello.ptr.prototype.Restore = function(prev) {
 		var _tuple, h, ok, old, prev;
 		h = this;
@@ -9891,17 +9889,47 @@ $packages["github.com/eapearson/vectyex/components"] = (function() {
 	};
 	Hello.prototype.Restore = function(prev) { return this.$val.Restore(prev); };
 	Hello.ptr.prototype.Render = function() {
-		var _r, _r$1, h, x, $s, $r;
-		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r = $f._r; _r$1 = $f._r$1; h = $f.h; x = $f.x; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		var _r, _r$1, h, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r = $f._r; _r$1 = $f._r$1; h = $f.h; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
 		h = this;
-		_r = elem.Div(new sliceType$1([(x = vecty.Markup(new sliceType([prop.Value(h.Greeting)])), new x.constructor.elem(x))])); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
-		_r$1 = elem.Body(new sliceType$1([_r])); /* */ $s = 2; case 2: if($c) { $c = false; _r$1 = _r$1.$blk(); } if (_r$1 && _r$1.$blk !== undefined) { break s; }
+		_r = vecty.Text(h.Greeting, new sliceType([])); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
+		_r$1 = elem.Div(new sliceType([_r])); /* */ $s = 2; case 2: if($c) { $c = false; _r$1 = _r$1.$blk(); } if (_r$1 && _r$1.$blk !== undefined) { break s; }
 		$s = -1; return _r$1;
-		/* */ } return; } if ($f === undefined) { $f = { $blk: Hello.ptr.prototype.Render }; } $f._r = _r; $f._r$1 = _r$1; $f.h = h; $f.x = x; $f.$s = $s; $f.$r = $r; return $f;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: Hello.ptr.prototype.Render }; } $f._r = _r; $f._r$1 = _r$1; $f.h = h; $f.$s = $s; $f.$r = $r; return $f;
 	};
 	Hello.prototype.Render = function() { return this.$val.Render(); };
-	ptrType.methods = [{prop: "Restore", name: "Restore", pkg: "", typ: $funcType([vecty.Component], [], false)}, {prop: "Render", name: "Render", pkg: "", typ: $funcType([], [ptrType$2], false)}];
+	Page.ptr.prototype.Restore = function(prev) {
+		var _tuple, h, ok, old, prev;
+		h = this;
+		_tuple = $assertType(prev, ptrType$2, true);
+		old = _tuple[0];
+		ok = _tuple[1];
+		if (ok) {
+			h.Title = old.Title;
+		}
+	};
+	Page.prototype.Restore = function(prev) { return this.$val.Restore(prev); };
+	Page.ptr.prototype.Render = function() {
+		var _arg, _arg$1, _arg$2, _r, _r$1, _r$2, _r$3, _r$4, _r$5, h, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _arg = $f._arg; _arg$1 = $f._arg$1; _arg$2 = $f._arg$2; _r = $f._r; _r$1 = $f._r$1; _r$2 = $f._r$2; _r$3 = $f._r$3; _r$4 = $f._r$4; _r$5 = $f._r$5; h = $f.h; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		h = this;
+		_r = vecty.Text(h.Title, new sliceType([])); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
+		_r$1 = elem.Heading1(new sliceType([_r])); /* */ $s = 2; case 2: if($c) { $c = false; _r$1 = _r$1.$blk(); } if (_r$1 && _r$1.$blk !== undefined) { break s; }
+		_arg = _r$1;
+		_r$2 = vecty.Text("This is the page view", new sliceType([])); /* */ $s = 3; case 3: if($c) { $c = false; _r$2 = _r$2.$blk(); } if (_r$2 && _r$2.$blk !== undefined) { break s; }
+		_r$3 = elem.Div(new sliceType([_r$2])); /* */ $s = 4; case 4: if($c) { $c = false; _r$3 = _r$3.$blk(); } if (_r$3 && _r$3.$blk !== undefined) { break s; }
+		_arg$1 = _r$3;
+		_r$4 = elem.Div(new sliceType([new Hello.ptr(new vecty.Core.ptr($ifaceNil, ptrType$3.nil, false), "hi from the insde")])); /* */ $s = 5; case 5: if($c) { $c = false; _r$4 = _r$4.$blk(); } if (_r$4 && _r$4.$blk !== undefined) { break s; }
+		_arg$2 = _r$4;
+		_r$5 = elem.Body(new sliceType([_arg, _arg$1, _arg$2])); /* */ $s = 6; case 6: if($c) { $c = false; _r$5 = _r$5.$blk(); } if (_r$5 && _r$5.$blk !== undefined) { break s; }
+		$s = -1; return _r$5;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: Page.ptr.prototype.Render }; } $f._arg = _arg; $f._arg$1 = _arg$1; $f._arg$2 = _arg$2; $f._r = _r; $f._r$1 = _r$1; $f._r$2 = _r$2; $f._r$3 = _r$3; $f._r$4 = _r$4; $f._r$5 = _r$5; $f.h = h; $f.$s = $s; $f.$r = $r; return $f;
+	};
+	Page.prototype.Render = function() { return this.$val.Render(); };
+	ptrType.methods = [{prop: "Restore", name: "Restore", pkg: "", typ: $funcType([vecty.Component], [], false)}, {prop: "Render", name: "Render", pkg: "", typ: $funcType([], [ptrType$3], false)}];
+	ptrType$2.methods = [{prop: "Restore", name: "Restore", pkg: "", typ: $funcType([vecty.Component], [], false)}, {prop: "Render", name: "Render", pkg: "", typ: $funcType([], [ptrType$3], false)}];
 	Hello.init("", [{prop: "Core", name: "Core", anonymous: true, exported: true, typ: vecty.Core, tag: ""}, {prop: "Greeting", name: "Greeting", anonymous: false, exported: true, typ: $String, tag: "vecty:\"prop\""}]);
+	Page.init("", [{prop: "Core", name: "Core", anonymous: true, exported: true, typ: vecty.Core, tag: ""}, {prop: "Title", name: "Title", anonymous: false, exported: true, typ: $String, tag: "vecty:\"prop\""}]);
 	$init = function() {
 		$pkg.$init = function() {};
 		/* */ var $f, $c = false, $s = 0, $r; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
@@ -9922,7 +9950,7 @@ $packages["github.com/eapearson/vectyex"] = (function() {
 		var p, $s, $r;
 		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; p = $f.p; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
 		$r = vecty.SetTitle("JGI Search | KBase Example App in GopherJS/vecty"); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-		p = new components.Hello.ptr(new vecty.Core.ptr($ifaceNil, ptrType.nil, false), "hi!");
+		p = new components.Page.ptr(new vecty.Core.ptr($ifaceNil, ptrType.nil, false), "My Page!");
 		$r = vecty.RenderBody(p); /* */ $s = 2; case 2: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 		$s = -1; return;
 		/* */ } return; } if ($f === undefined) { $f = { $blk: main }; } $f.p = p; $f.$s = $s; $f.$r = $r; return $f;
@@ -9950,4 +9978,4 @@ $go($mainPkg.$init, []);
 $flushConsole();
 
 }).call(this);
-//# sourceMappingURL=example.js.map
+//# sourceMappingURL=vectyex.js.map

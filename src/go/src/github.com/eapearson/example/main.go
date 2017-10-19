@@ -1,15 +1,15 @@
 package main
 
 import (
+	"log"
+
+	"github.com/eapearson/example/app"
+	"github.com/eapearson/example/components/counter"
+	"github.com/eapearson/example/components/greeting"
+	"github.com/eapearson/gopherjs-ko"
 	"github.com/gopherjs/gopherjs/js"
 	"honnef.co/go/js/dom"
-	"github.com/eapearson/gopherjs-ko"
-	"log" 
-	"github.com/eapearson/example/components/greeting"
-	"github.com/eapearson/example/components/counter"
-	"github.com/eapearson/example/app"
 )
-
 
 func main() {
 	log.Println("hi, we are ready to proceed!!!")
@@ -17,8 +17,6 @@ func main() {
 	log.Println("should have something in the dom??")
 
 	root := dom.GetWindow().Document().QuerySelector("#app")
-
-
 
 	// Main layout markup is loaded from a precompiled template.
 	layout := app.T_layout(greeting.Binding(), counter.Binding())
@@ -33,8 +31,9 @@ func main() {
 
 	// Simply set the root markup.
 	root.SetInnerHTML(layout)
-  
+
 	// And apply the initial bindings.
 	// All other embededd components will cascade from here.
-	ko.ApplyBindings(js.M{"greeting": "Hello", "name": "Erik"}, root)
+	ko.ApplyBindings(js.M{"greeting": "Hello",
+		"name": "Erik"}, root)
 }
