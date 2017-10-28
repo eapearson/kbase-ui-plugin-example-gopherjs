@@ -23,6 +23,7 @@ define([], function() {
         var partners = {};
 
         function addPartner(config) {
+            console.log('adding partner...', config.name, config);
             partners[config.name] = config;
         }
 
@@ -37,6 +38,10 @@ define([], function() {
             var origin = event.origin || event.originalEvent.origin,
                 message = event.data,
                 listener, response;
+
+            if (typeof message === 'string') {
+                message = JSON.parse(message);
+            }
 
             if (message.id && awaitingResponse[message.id]) {
                 try {
@@ -63,6 +68,7 @@ define([], function() {
         }
 
         function getPartner(name) {
+            console.log('getting partner', name);
             var partner = partners[name];
             if (!partner) {
                 throw new Error('Partner ' + name + ' not registered');

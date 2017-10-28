@@ -1,177 +1,43 @@
 define([
     'bluebird',
-    'kb_common/html',
-    './comm/iframeMessages',
-    'bootstrap'
+    './comm/iframer'
 ], function(
     Promise,
-    html,
-    IframeMessages
+    Iframer
 ) {
     'use strict';
 
-    var t = html.tag,
-        div = t('div'),
-        iframe = t('iframe');
-
     function factory(config) {
         var container,
-            runtime = config.runtime,
-            hostOrigin = getOrigin(),
-            iframeOrigin = getOrigin(),
-            iframeMessages = IframeMessages.makeHost({
-                root: window,
-                name: 'panel'
-            });
-
-
-        // VIEW
-
-        //        function updateStats() {
-        //            var stats = iframeMessages.stats(),
-        //                content = table({class: 'table table-striped'}, [
-        //                    Object.keys(stats).map(function (key) {
-        //                        return tr([th(key), td(String(stats[key]))]);
-        //                    })
-        //                ]);
-        //            container.querySelector('[data-element="stats"]').innerHTML = content;
-        //        }
-
-        function getOrigin() {
-            return document.location.origin;
-        }
-
-        function makeIframe() {
-            var frameNumber = html.genId(),
-                frameId = 'frame_' + frameNumber,
-                iframeIndex = '/modules/plugins/example-gopherjs/iframe_root/index.html',
-                iframeUrl = iframeOrigin + iframeIndex,
-                content = div({
-                    style: {
-                        // padding: '10px',
-                        flex: '1 1 0px',
-                        display: 'flex',
-                        fiexDirection: 'column'
-                    }
-                }, [
-                    // div({dataElement: 'stats'}),
-                    iframe({
-                        dataFrame: 'frame_' + frameNumber,
-                        dataParams: encodeURIComponent(JSON.stringify({
-                            parentHost: hostOrigin,
-                            frameId: 'frame_' + frameNumber
-                        })),
-                        style: {
-                            width: '100%',
-                            // height: '100%',
-                            flex: '1 1 0px',
-                            display: 'flex',
-                            flexDirection: 'column'
-                        },
-                        frameborder: 0,
-                        scrolling: 'no',
-                        src: iframeUrl
-                    })
-                ]);
-            return {
-                parentHost: hostOrigin,
-                host: iframeOrigin,
-                frameNumber: frameNumber,
-                frameId: frameId,
-                content: content
-            };
-        }
+            runtime = config.runtime;
 
         // API
 
         function attach(node) {
-            return Promise.try(function() {
-                container = node;
-            });
+            container = node;
         }
+
+        var iframer;
 
         function start(params) {
             return Promise.try(function() {
-                var embeddedIframe = makeIframe();
+                iframer = Iframer.make({
+                    runtime: runtime,
+                    node: container,
+                    plugin: 'example-gopherjs'
+                });
 
                 runtime.send('ui', 'setTitle', 'The GopherJS Experiment');
 
-                container.innerHTML = embeddedIframe.content;
-
-                iframeMessages.start();
-
-                iframeMessages.listen({
-                    name: 'ready',
-                    handler: function(message) {
-                        if (message.frameId !== embeddedIframe.frameId) {
-                            console.error('Unexpected "ready"', message, message.frameId, embeddedIframe.frameId);
-                            return;
-                        }
-
-                        iframeMessages.addPartner({
-                            name: message.frameId,
-                            host: embeddedIframe.host,
-                            window: container.querySelector('[data-frame="frame_' + embeddedIframe.frameNumber + '"]').contentWindow
-                        });
-
-                        // updateStats();
-
-                        iframeMessages.send(message.from, {
-                            name: 'start'
-                        });
-                    }
-                });
-
-                iframeMessages.listen({
-                    name: 'rendered',
-                    handler: function(message) {
-                        var height = message.height,
-                            iframe = container.querySelector('[data-frame="frame_' + embeddedIframe.frameNumber + '"]');
-                        iframe.style.height = height + 'px';
-                    }
-                });
-
-                iframeMessages.listen({
-                    name: 'authStatus',
-                    handler: function(message) {
-                        iframeMessages.send(message.from, {
-                            name: 'authInfo',
-                            id: message.id,
-                            token: runtime.service('session').getAuthToken(),
-                            username: runtime.service('session').getUsername()
-                        });
-                    }
-                });
-
-                iframeMessages.listen({
-                    name: 'configProperty',
-                    handler: function(message) {
-                        iframeMessages.send(message.from, {
-                            name: 'config',
-                            id: message.id,
-                            value: runtime.config(message.property)
-                        });
-                    }
-                });
-
-                iframeMessages.listen({
-                    name: 'config',
-                    handler: function(message) {
-                        iframeMessages.send(message.from, {
-                            name: 'config',
-                            id: message.id,
-                            value: runtime.rawConfig()
-                        });
-                    }
-                });
-
-                // updateStats();
+                return iframer.start();
             });
         }
 
         function stop() {
             return Promise.try(function() {
-                iframeMessages.stop();
+                if (iframer) {
+                    iframer.stop();
+                }
                 container.innerHTML = '';
             });
         }
